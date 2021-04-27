@@ -11,7 +11,7 @@ if s:adoc_pdf_live.is_configured()
     command! AdocPdfLiveDebug :call s:adoc_pdf_live.set_debug(1)
     command! AdocPdfLiveNoDebug :call s:adoc_pdf_live.set_debug(1)
     " Set the style file
-    command! -nargs=1 AdocPdfStyle :call s:adoc_pdf_live.set_style('<args>')
+    command! -nargs=1 AdocPdfLiveStyle :call s:adoc_pdf_live.set_style('<args>')
 
     " Show the logs
     command! AdocPdfLiveLogs :call s:adoc_pdf_live.show_logs()

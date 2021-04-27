@@ -21,28 +21,46 @@ Plug 'marioortizmanero/adoc-pdf-live.nvim'
 .https://github.com/wbthomason/packer.nvim[packer.nvim]
 [source, vim]
 ----
-use 'marioortizmanero/adoc-pdf-live.nvim'
+use {
+    'marioortizmanero/adoc-pdf-live.nvim',
+    config = "require('adoc_pdf_live').setup()"
+}
 ----
 
 == Usage
 
-You can setup the plugin with its default configuration with:
+You must setup the plugin in order to use it. For the basic setup with the
+default options:
 
 [source, lua]
 ----
 require('adoc_pdf_live').setup()
 ----
 
-Or, to override the default options:
+Or, to specify your own custom options:
 
 [source, lua]
 ----
 require('adoc_pdf_live').setup {
     viewer = 'zathura',
-    params = '-r asciidoctor-mathematical -r asciidoctor-diagram -a mathematical-format=svg'
+    params = '-r asciidoctor-mathematical -r asciidoctor-diagram -a mathematical-format=svg',
     style_regex = 'custom-style\\.ya?ml'
 }
 ----
 
-See the configuration section in the documentation for more information of each
-option.
+See the configuration section in the documentation for more information about
+the available options.
+
+Once you have an AsciiDoc file open, you can use the `:AdocPdfLiveStart` command
+to compile the document whenever the file is saved. `:AdocPdfLiveOpen` will
+additionally open your preferred PDF viewer, and `:AdocPdfLiveStop` will stop
+the plugin. For more commands, see its section in the documentation.
+
+It's highly recommended to use a PDF viewer like
+https://pwmt.org/projects/zathura/[zathura] which automatically reloads the file
+when it's modified, so that the live reloading is seamless.
+
+https://github.com/asciidoctor/asciidoctor-pdf/blob/main/docs/theming-guide.adoc[Yaml
+style files] are roughly supported. This plugin will automatically look for one
+and enable it when compiling the PDF, with the `style_regex` option. You can
+override it with the `style` option or the `:AdocPdfLiveStyle STYLE` command.
