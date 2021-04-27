@@ -27,7 +27,7 @@ local function with_defaults(options)
         -- The viewer command must be like `command <file>`
         viewer = options.viewer or 'zathura',
         binary = 'asciidoctor-pdf',
-        params = options.params or '-r asciidoctor-mathematical -r asciidoctor-diagram -a mathematical-format=svg',
+        params = options.params or '',
         -- Shows the command stdout when activated
         debug = options.debug or false,
         style = options.style or '',
