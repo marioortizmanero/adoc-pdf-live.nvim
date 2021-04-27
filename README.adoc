@@ -10,6 +10,8 @@ https://github.com/neovim/neovim[neovim nightly 0.5]. Feel free to open an issue
 or pull request to fix anything on your system. This is my first vim plugin ever
 as well, so there's probably lots to improve.
 
+image::./images/screenshot.png[screenshot, align=center, width=90%]
+
 == Installation
 
 .https://github.com/junegunn/vim-plug[vim-plug]
