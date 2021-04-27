@@ -38,12 +38,11 @@ Or, to override the default options:
 [source, lua]
 ----
 require('adoc_pdf_live').setup {
-    enabled = options.enabled or false,
-    viewer = options.viewer or 'zathura',
-    binary = 'asciidoctor-pdf',
-    params = options.params or '',
-    debug = options.debug or false,
-    style = options.style or '',
-    style_regex = options.style_regex or 'style\\.ya?ml'
+    viewer = 'zathura',
+    params = '-r asciidoctor-mathematical -r asciidoctor-diagram -a mathematical-format=svg'
+    style_regex = 'custom-style\\.ya?ml'
 }
 ----
+
+See the configuration section in the documentation for more information of each
+option.

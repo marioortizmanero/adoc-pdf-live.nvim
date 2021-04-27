@@ -22,44 +22,24 @@ lots to improve.
 ==============================================================================
 USAGE                                                    *adoc-pdf-live-usage*
 
-For basic setup with all batteries included:
+
+You can setup the plugin with its default configuration with:
+
 >
-    require('gitsigns').setup()
-<
-
-Configuration can be passed to the setup function. Here is an example with all
-the default settings:
+    require('adoc_pdf_live').setup()
 >
-    require('gitsigns').setup {
-      signs = {
-        add          = {hl = 'DiffAdd'   , text = '│', numhl='GitSignsAddNr'},
-        change       = {hl = 'DiffChange', text = '│', numhl='GitSignsChangeNr'},
-        delete       = {hl = 'DiffDelete', text = '_', numhl='GitSignsDeleteNr'},
-        topdelete    = {hl = 'DiffDelete', text = '‾', numhl='GitSignsDeleteNr'},
-        changedelete = {hl = 'DiffChange', text = '~', numhl='GitSignsChangeNr'},
-      },
-      numhl = false,
-      keymaps = {
-        -- Default keymap options
-        noremap = true,
-        buffer = true,
 
-        ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'"},
-        ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'"},
+Or, to override the default options:
 
-        ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
-        ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
-        ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-        ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-        ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
-      },
-      watch_index = {
-        interval = 1000
-      },
-      sign_priority = 6,
-      status_formatter = nil -- Use default
+>
+    require('adoc_pdf_live').setup {
+        viewer = 'zathura',
+        params = '-r asciidoctor-mathematical -r asciidoctor-diagram -a mathematical-format=svg'
+        style_regex = 'custom-style\\.ya?ml'
     }
-<
+>
+
+See the configuration section for more information of each option.
 
 ==============================================================================
 CONFIGURATION                                           *adoc-pdf-live-config*
