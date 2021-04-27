@@ -46,7 +46,6 @@ Or, to specify your own custom options (the example lists the default values):
         viewer = 'zathura',
         binary = 'asciidoctor-pdf',
         params = '',
-        -- Shows the command stdout when activated
         debug = false,
         style = '',
         style_regex = 'style\\.ya?ml'

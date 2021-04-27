@@ -47,7 +47,6 @@ require('adoc_pdf_live').setup {
     viewer = 'zathura',
     binary = 'asciidoctor-pdf',
     params = '',
-    -- Shows the command stdout when activated
     debug = false,
     style = '',
     style_regex = 'style\\.ya?ml'
