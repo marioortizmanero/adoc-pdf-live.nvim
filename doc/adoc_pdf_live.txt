@@ -37,23 +37,29 @@ default options:
     require('adoc_pdf_live').setup()
 >
 
-Or, to specify your own custom options:
+Or, to specify your own custom options (the example lists the default values):
 
 >
     require('adoc_pdf_live').setup {
+        enabled = false,
+        -- The viewer command must be like `command <file>`
         viewer = 'zathura',
-        params = '-r asciidoctor-mathematical -r asciidoctor-diagram -a mathematical-format=svg',
-        style_regex = 'custom-style\\.ya?ml'
+        binary = 'asciidoctor-pdf',
+        params = '',
+        -- Shows the command stdout when activated
+        debug = false,
+        style = '',
+        style_regex = 'style\\.ya?ml'
     }
 >
 
-See the configuration section for more information about the available
-options.
+See the |adoc-pdf-live-configuration| section for more information about the
+available options.
 
 Once you have an AsciiDoc file open, you can use the |:AdocPdfLiveStart| command
 to compile the document whenever the file is saved. |:AdocPdfLiveOpen| will
 additionally open your preferred PDF viewer, and |:AdocPdfLiveStop| will stop
-the plugin. For more commands, see its section in the documentation.
+the plugin. For more commands, see |adoc-pdf-live-commands|.
 
 It's highly recommended to use a PDF viewer like zathura [1] which
 automatically reloads the file when it's modified, so that the live reloading
