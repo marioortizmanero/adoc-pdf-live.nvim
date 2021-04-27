@@ -50,9 +50,9 @@ Or, to specify your own custom options:
 See the configuration section for more information about the available
 options.
 
-Once you have an AsciiDoc file open, you can use the `:AdocPdfLiveStart` command
-to compile the document whenever the file is saved. `:AdocPdfLiveOpen` will
-additionally open your preferred PDF viewer, and `:AdocPdfLiveStop` will stop
+Once you have an AsciiDoc file open, you can use the |:AdocPdfLiveStart| command
+to compile the document whenever the file is saved. |:AdocPdfLiveOpen| will
+additionally open your preferred PDF viewer, and |:AdocPdfLiveStop| will stop
 the plugin. For more commands, see its section in the documentation.
 
 It's highly recommended to use a PDF viewer like zathura [1] which
@@ -60,9 +60,9 @@ automatically reloads the file when it's modified, so that the live reloading
 is seamless.
 
 Yaml style files [2] are roughly supported. This plugin will automatically
-look for one and enable it when compiling the PDF, with the `style_regex`
-option. You can override it with the `style` option or the `:AdocPdfLiveStyle
-STYLE` command.
+look for one and enable it when compiling the PDF, with the |style_regex|
+option. You can override it with the |style| option or the |:AdocPdfLiveStyle|
+command.
 
 [1] https://pwmt.org/projects/zathura/
 [2] https://github.com/asciidoctor/asciidoctor-pdf/blob/main/docs/theming-guide.adoc
@@ -75,7 +75,7 @@ COMMANDS                                              *adoc-pdf-live-commands*
 Start compiling the document whenever the AsciiDoc file is saved.
 
 If a style file isn't set, the plugin will try to find one with the configured
-regex in the `style-regex` option.
+regex in the |style-regex| option.
 
 |:AdocPdfLiveOpen|                                            *:AdocPdfLiveOpen*
 
@@ -83,7 +83,7 @@ Start compiling the document whenever the AsciiDoc file is saved and open the
 configured PDF viewer with it.
 
 If a style file isn't set, the plugin will try to find one with the configured
-regex in the `style-regex` option.
+regex in the |style-regex| option.
 
 |:AdocPdfLiveStop|                                            *:AdocPdfLiveStop*
 
@@ -136,7 +136,7 @@ style                                             *adoc-pdf-live-config-style*
 
         The style file to forcefully use. If empty, adoc-pdf-live will look
         for a style file in the current directory automatically, with the
-        regex given by `style-regex`.
+        regex given by |style-regex|.
 
 style-regex                                 *adoc-pdf-live-config-style-regex*
         Type: `string`, Default: `'style\\.ya?ml'`
