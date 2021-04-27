@@ -1,0 +1,43 @@
+= adoc-pdf-live.nvim
+
+Very simple live preview plugin for asciidoctor-pdf. HTML live preview is
+perfect with the
+https://asciidoctor.cn/docs/editing-asciidoc-with-live-preview/[browser
+plugins], but for PDF documents there's nothing available.
+
+This is a plugin I made for my own use, so I've only tested it on
+https://github.com/neovim/neovim[neovim nightly 0.5]. Feel free to open an issue
+or pull request to fix anything on your system. This is my first vim plugin ever
+as well, so there's probably lots to improve.
+
+== Installation
+
+.https://github.com/junegunn/vim-plug[vim-plug]
+[source, vim]
+----
+Plug 'marioortizmanero/adoc-pdf-live.nvim'
+----
+
+.https://github.com/wbthomason/packer.nvim[packer.nvim]
+[source, vim]
+----
+use 'marioortizmanero/adoc-pdf-live.nvim'
+----
+
+== Usage
+
+You can setup the plugin with its default configuration with:
+
+[source, lua]
+----
+require('adoc_pdf_live').setup()
+----
+
+Or, to override the default options:
+
+[source, lua]
+----
+require('adoc_pdf_live').setup {
+
+}
+----
