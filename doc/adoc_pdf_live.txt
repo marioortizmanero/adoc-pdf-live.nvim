@@ -1,0 +1,110 @@
+*adoc-pdf-live.txt* simple live preview plugin for AsciiDoc PDF documents
+
+Author: Mario Ortiz Manero <marioortizmanero@gmail.com>
+Homepage: <https://github.com/marioortizmanero/adoc-pdf-live.nvim>
+License: GPLv3
+
+==============================================================================
+INTRODUCTION                                                   *adoc-pdf-live*
+
+Very simple live preview plugin for AsciiDoc PDF documents. HTML live preview
+is perfect with the browser plugins [1], but for PDF documents there's nothing
+available.
+
+This is a plugin I made for my own use, so I've only tested it on NeoVim
+nightly 0.5 [2]. Feel free to open an issue or pull request to fix anything on
+your system. This is my first vim plugin ever as well, so there's probably
+lots to improve.
+
+[1] https://asciidoctor.cn/docs/editing-asciidoc-with-live-preview/
+[2] https://github.com/neovim/neovim
+
+==============================================================================
+USAGE                                                    *adoc-pdf-live-usage*
+
+For basic setup with all batteries included:
+>
+    require('gitsigns').setup()
+<
+
+Configuration can be passed to the setup function. Here is an example with all
+the default settings:
+>
+    require('gitsigns').setup {
+      signs = {
+        add          = {hl = 'DiffAdd'   , text = '│', numhl='GitSignsAddNr'},
+        change       = {hl = 'DiffChange', text = '│', numhl='GitSignsChangeNr'},
+        delete       = {hl = 'DiffDelete', text = '_', numhl='GitSignsDeleteNr'},
+        topdelete    = {hl = 'DiffDelete', text = '‾', numhl='GitSignsDeleteNr'},
+        changedelete = {hl = 'DiffChange', text = '~', numhl='GitSignsChangeNr'},
+      },
+      numhl = false,
+      keymaps = {
+        -- Default keymap options
+        noremap = true,
+        buffer = true,
+
+        ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'"},
+        ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'"},
+
+        ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+        ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+        ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+        ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+        ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line()<CR>',
+      },
+      watch_index = {
+        interval = 1000
+      },
+      sign_priority = 6,
+      status_formatter = nil -- Use default
+    }
+<
+
+==============================================================================
+CONFIGURATION                                           *adoc-pdf-live-config*
+
+enabled                                         *adoc-pdf-live-config-enabled*
+        Type: `boolean`, Default: `false`
+
+        True when the plugin is enabled. If this is set in the `setup`
+        function, this plugin will always be enabled on startup.
+
+viewer                                           *adoc-pdf-live-config-viewer*
+        Type: `string`, Default: `'zathura'`
+
+        The PDF viewer ran when using AdocPdfLiveOpen. The command must take
+        the filename as its next argument.
+
+binary                                           *adoc-pdf-live-config-binary*
+        Type: `string`, Default: `'asciidoctor-pdf'`
+
+        The binary to be ran to compile the file.
+
+params                                           *adoc-pdf-live-config-params*
+        Type: `string`, Default: `''`
+
+        Extra arguments given to the compiler binary. This is helpful to
+        enable extensions, like `'-r asciidoctor-mathematical'`
+
+style                                             *adoc-pdf-live-config-style*
+        Type: `string`, Default: `''`
+
+        The style file to forcefully use. If empty, adoc-pdf-live will look
+        for a style file in the current directory automatically, with the
+        regex given by `style-regex`.
+
+style-regex                                 *adoc-pdf-live-config-style-regex*
+        Type: `string`, Default: `'style\\.ya?ml'`
+
+        The regex used when looking for which style yaml to use, with a
+        sed-like format. This plugin will look for a file matching this
+        regular expression and enable it when compiling the document with
+        `-a pdf-style=FILE`
+
+debug                                             *adoc-pdf-live-config-debug*
+        Type: `boolean`, Default: `false`
+
+        Print diagnostic messages.
+
+ vim:tw=78:ts=2:ft=help:norl:

@@ -1,6 +1,6 @@
 = adoc-pdf-live.nvim
 
-Very simple live preview plugin for asciidoctor-pdf. HTML live preview is
+Very simple live preview plugin for AsciiDoc PDF documents. HTML live preview is
 perfect with the
 https://asciidoctor.cn/docs/editing-asciidoc-with-live-preview/[browser
 plugins], but for PDF documents there's nothing available.
@@ -38,6 +38,12 @@ Or, to override the default options:
 [source, lua]
 ----
 require('adoc_pdf_live').setup {
-
+    enabled = options.enabled or false,
+    viewer = options.viewer or 'zathura',
+    binary = 'asciidoctor-pdf',
+    params = options.params or '',
+    debug = options.debug or false,
+    style = options.style or '',
+    style_regex = options.style_regex or 'style\\.ya?ml'
 }
 ----

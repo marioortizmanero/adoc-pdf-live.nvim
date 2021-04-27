@@ -7,7 +7,7 @@ local function log(txt)
 
     local date = vim.fn.trim(vim.fn.system("date"))
     txt = string.format("[%s] %s", date, txt)
-    adoc_pdf_live.out_buf = adoc_pdf_live.out_buf .. "\n" .. txt
+    adoc_pdf_live.logs = adoc_pdf_live.logs .. "\n" .. txt
 end
 
 -- Wrapper to run commands with or without stdout. May be ran in the background
@@ -57,8 +57,13 @@ end
 function adoc_pdf_live.setup(options)
    adoc_pdf_live.options = with_defaults(options or {})
 
-    -- For logging
-   adoc_pdf_live.out_buf = ""
+    -- Initializing logging
+   adoc_pdf_live.logs = ""
+
+   -- Auto start-up
+   if adoc_pdf_live.options.enabled then
+       adoc_pdf_live.start()
+   end
 end
 
 function adoc_pdf_live.is_configured()
@@ -127,7 +132,7 @@ function adoc_pdf_live.set_debug(val)
 end
 
 function adoc_pdf_live.show_logs()
-    print(adoc_pdf_live.out_buf)
+    print(adoc_pdf_live.logs)
 end
 
 return adoc_pdf_live
