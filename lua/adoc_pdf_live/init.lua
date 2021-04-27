@@ -42,7 +42,15 @@ local function find_style()
 
     log("Looking for styles automatically")
 
-    local cmd = string.format("find . -maxdepth 2 -regex '.*/%s' -regextype sed -print -quit", adoc_pdf_live.options.style_regex)
+    local cmd = string.format(
+        "find . \
+            -maxdepth 2 \
+            -regex '.*/%s' \
+            -regextype sed \
+            -print \
+            -quit",
+        adoc_pdf_live.options.style_regex
+    )
     local found = exec(cmd, false)
 
     if #found > 0 then
