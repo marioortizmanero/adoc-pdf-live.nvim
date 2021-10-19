@@ -26,7 +26,7 @@ local function with_defaults(options)
         enabled = options.enabled or false,
         -- The viewer command must be like `command <file>`
         viewer = options.viewer or 'zathura',
-        binary = 'asciidoctor-pdf',
+        binary = options.binary or 'asciidoctor-pdf',
         params = options.params or '',
         -- Shows the command stdout when activated
         debug = options.debug or false,
