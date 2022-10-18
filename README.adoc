@@ -55,6 +55,33 @@ require('adoc_pdf_live').setup {
 }
 ----
 
+=== Auto execute on document open
+
+Add to your config file
+[source,lua]
+----
+-- Execute command on BufEnter
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = {"*.adoc", "*.asciidoc"},
+  callback = function()
+    local cmd = string.format("silent! !pkill -f '%s %s.pdf'", require('adoc_pdf_live').options.viewer, vim.fn.expand('%:r'))
+    vim.cmd(cmd)
+
+    vim.fn.luaeval('require("adoc_pdf_live")').open()
+  end,
+})
+
+# Execute command on quit
+vim.api.nvim_create_autocmd('VimLeave', {
+  pattern = '*.adoc, *.asciidoc',
+  callback = function()
+    local cmd = string.format("silent! !pkill -f '%s %s.pdf'", require('adoc_pdf_live').options.viewer, vim.fn.expand('%:r'))
+    vim.cmd(cmd)
+  end,
+})
+----
+
+
 See the configuration section in the documentation for more information about
 the available options.
 
